@@ -48,7 +48,21 @@ def agregar_producto():
     total = precio * cantidad
     items_cotizados.append((producto, tipo_papel, cantidad, precio, total, tintas, plastificado, letras, listones))
 
-    tabla.insert("", "end", values=(producto, tipo_papel, cantidad, f"${precio:,.2f}", f"${total:,.2f}", tintas, plastificado, letras, listones))
+    tabla.insert(
+        "",
+        "end",
+        values=(
+            producto,
+            tipo_papel,
+            cantidad,
+            f"${precio:,.2f}",
+            tintas,
+            plastificado,
+            letras,
+            listones,
+            f"${total:,.2f}",
+        ),
+    )
 
     entry_cantidad.delete(0, "end")
     actualizar_total()
@@ -261,7 +275,7 @@ tabla = ttk.Treeview(
 tabla.pack(side="left", fill="both", expand=True)
 
 style = ttk.Style()
-style.configure("Treeview", font=("Arial", 11), rowheight=10)
+style.configure("Treeview", font=("Arial", 11), rowheight=24)
 style.configure("Treeview.Heading", font=("Arial", 10, "bold"))
 
 #  Encabezados
@@ -277,15 +291,15 @@ tabla.heading("listones", text="Listones")
 
 
 # Ancho de columnas
-tabla.column("producto", width=150, anchor="center")
-tabla.column("papel", width=100, anchor="center")
+tabla.column("producto", width=200, anchor="center")
+tabla.column("papel", width=120, anchor="center")
 tabla.column("cantidad", width=100, anchor="center")
-tabla.column("precio", width=120, anchor="center")
-tabla.column("total", width=120, anchor="center")
-tabla.column("tintas", width=80, anchor="center")
-tabla.column("plastificado", width=100, anchor="center")
-tabla.column("letras", width=120, anchor="center")
-tabla.column("listones", width=120, anchor="center")
+tabla.column("precio", width=140, anchor="center")
+tabla.column("total", width=140, anchor="center")
+tabla.column("tintas", width=90, anchor="center")
+tabla.column("plastificado", width=120, anchor="center")
+tabla.column("letras", width=140, anchor="center")
+tabla.column("listones", width=140, anchor="center")
 
 # Scrollbar
 scrollbar = ttk.Scrollbar(frame_tabla, orient="vertical", command=tabla.yview)
