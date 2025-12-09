@@ -191,12 +191,8 @@ entry_vendedor.pack(padx=10, pady=5, fill="x")
 frame_superior = ctk.CTkFrame(frame_superior_contenedor)
 frame_superior.pack(side="left", padx=20, pady=10, fill="both", expand=True)
 
-
-btn_guardar = ctk.CTkButton(frame_superior, text="Guardar Cotización", command=guardar_cotizacion)
-btn_guardar.grid(row=5, column=0, columnspan=3, pady=20)
-
-btn_consultar = ctk.CTkButton(frame_superior, text="Consultar Cotizaciones", command=abrir_consultas)
-btn_consultar.grid(row=6, column=0, columnspan=3, pady=20)
+for col in range(4):
+    frame_superior.grid_columnconfigure(col, weight=1)
 
 
 label_producto = ctk.CTkLabel(frame_superior, text="Producto (Bolsa o Caja):", font=("Arial", 14))
@@ -242,10 +238,16 @@ combo_listones.grid(row=3, column=3, padx=10)
 
 
 btn_agregar = ctk.CTkButton(frame_superior, text="Generar cotización", command=agregar_producto)
-btn_agregar.grid(row=2, column=0, columnspan=2, pady=(20, 0), padx=10, sticky="w")
+btn_agregar.grid(row=5, column=0, pady=20, padx=10, sticky="ew")
 
 btn_admin = ctk.CTkButton(frame_superior, text="Administrar productos", command=abrir_admin)
-btn_admin.grid(row=2, column=2, pady=(20, 0), padx=10, sticky="w")
+btn_admin.grid(row=5, column=1, pady=20, padx=10, sticky="ew")
+
+btn_guardar = ctk.CTkButton(frame_superior, text="Guardar Cotización", command=guardar_cotizacion)
+btn_guardar.grid(row=5, column=2, pady=20, padx=10, sticky="ew")
+
+btn_consultar = ctk.CTkButton(frame_superior, text="Consultar Cotizaciones", command=abrir_consultas)
+btn_consultar.grid(row=5, column=3, pady=20, padx=10, sticky="ew")
 
 # --- Frame para la tabla (abajo)
 frame_tabla = ctk.CTkFrame(app)
